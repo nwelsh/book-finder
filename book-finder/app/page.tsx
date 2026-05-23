@@ -64,6 +64,11 @@ export default function Home() {
                   ? "✅ Kindle Unlimited"
                   : "❌ Not on Kindle Unlimited"}
               </p>
+              <p className="mt-2">
+                {book.libby
+                  ? "✅ Chicago public libby"
+                  : "❌ Not on Chicago public libby"}
+              </p>
             </div>
           </div>
         ))}

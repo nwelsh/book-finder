@@ -4,4 +4,5 @@ export interface Book {
   authors: string[];
   thumbnail?: string;
   kindleUnlimited: boolean;
+  libby: boolean;
 }
