@@ -7,7 +7,6 @@ export default function Home() {
   const [books, setBooks] = useState<any[]>([]);
 
   async function handleSearch() {
-    console.log("SEARCH CLICKED");
 
     try {
       const res = await fetch(`/api/books?q=${query}`);
@@ -35,6 +34,7 @@ export default function Home() {
         />
 
         <button
+          type="button"
           className="bg-black text-white px-4 py-2 rounded"
           onClick={handleSearch}
         >
