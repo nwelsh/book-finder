@@ -45,7 +45,7 @@ export default function Home() {
       </div>
       {loading && (
         <div className="text-center py-8">
-          <p className="text-lg font-medium">Loading</p>
+          <p className="text-lg font-medium">Loading...</p>
         </div>
       )}
 
@@ -71,9 +71,9 @@ export default function Home() {
                   : "❌ Not on Kindle Unlimited"}
               </p>
               <p className="mt-2">
-                {book.libby
-                  ? "✅ Chicago public libby"
-                  : "❌ Not on Chicago public libby"}
+                {book.chicagoLibrary
+                  ? "📚 Available at Chicago Public Library"
+                  : "❌ Not at Chicago Public Library"}
               </p>
             </div>
           </div>
