@@ -5,20 +5,21 @@ import { useState } from "react";
 export default function Home() {
   const [query, setQuery] = useState("");
   const [books, setBooks] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
 
   async function handleSearch() {
-
     try {
-      console.log('here')
+      setLoading(true);
+
       const res = await fetch(`/api/books?q=${query}`);
 
       const data = await res.json();
 
-      console.log(data);
-
       setBooks(data);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -42,6 +43,11 @@ export default function Home() {
           Search
         </button>
       </div>
+      {loading && (
+        <div className="text-center py-8">
+          <p className="text-lg font-medium">Loading</p>
+        </div>
+      )}
 
       <div className="grid gap-4">
         {books.map((book) => (

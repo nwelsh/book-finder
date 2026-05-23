@@ -1,4 +1,5 @@
 import axios from "axios";
+import { checkKindleUnlimited } from "./kindle";
 
 const API_KEY = process.env.GOOGLE_BOOKS_API_KEY;
 
@@ -8,16 +9,33 @@ export async function searchBooks(query: string) {
     {
       params: {
         q: query,
-        maxResults: 10,
+        maxResults: 1,
         key: API_KEY,
       },
     }
   );
 
-  return response.data.items.map((item: any) => ({
-    id: item.id,
-    title: item.volumeInfo.title,
-    authors: item.volumeInfo.authors || [],
-    thumbnail: item.volumeInfo.imageLinks?.thumbnail,
-  }));
+  const item = response.data.items?.[0];
+
+  if (!item) {
+    return [];
+  }
+
+  const title = item.volumeInfo.title;
+
+  const kindleUnlimited =
+    await checkKindleUnlimited(title);
+
+  return [
+    {
+      id: item.id,
+      title,
+      authors: item.volumeInfo.authors || [],
+      thumbnail:
+        item.volumeInfo.imageLinks?.thumbnail,
+      description:
+        item.volumeInfo.description,
+      kindleUnlimited,
+    },
+  ];
 }
