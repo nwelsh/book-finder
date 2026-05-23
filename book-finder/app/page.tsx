@@ -9,6 +9,7 @@ export default function Home() {
   async function handleSearch() {
 
     try {
+      console.log('here')
       const res = await fetch(`/api/books?q=${query}`);
 
       const data = await res.json();
