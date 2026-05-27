@@ -87,7 +87,7 @@ export default function Home() {
                   )}
                 </div>
               ) : (
-                <p>❌ Not in Chicago Public Library - test</p>
+                <p>❌ Not in Chicago Public Library</p>
               )}
             </div>
           </div>
