@@ -79,7 +79,7 @@ export default function Home() {
                   {book.library.ebookWaitlist && <p>⏳ Ebook Waitlist</p>}
 
                   {book.library.audiobookAvailable && (
-                    <p>🎧 Audiobook Available Now</p>
+                    <p>🎧 Audiobook Available</p>
                   )}
 
                   {book.library.audiobookWaitlist && (
