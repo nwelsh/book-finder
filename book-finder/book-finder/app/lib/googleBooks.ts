@@ -24,33 +24,25 @@ export async function searchBooks(query: string) {
 
   const title = item.volumeInfo.title;
 
-  // Run BOTH checks in parallel
-  const [kindleUnlimited, library] =
-    await Promise.all([
-      checkKindleUnlimited(title),
-      checkChicagoLibrary(title),
-    ]);
+  const [
+    kindleUnlimited,
+    chicagoLibrary,
+  ] = await Promise.all([
+    checkKindleUnlimited(title),
+    checkChicagoLibrary(title),
+  ]);
 
   return [
     {
       id: item.id,
       title,
       authors: item.volumeInfo.authors || [],
-      description:
-        item.volumeInfo.description || "",
       thumbnail:
-        item.volumeInfo.imageLinks?.thumbnail ||
-        "",
-
-      publishedDate:
-        item.volumeInfo.publishedDate || "",
-
-      pageCount:
-        item.volumeInfo.pageCount || 0,
-
+        item.volumeInfo.imageLinks?.thumbnail,
+      description:
+        item.volumeInfo.description,
       kindleUnlimited,
-
-      library,
+      chicagoLibrary,
     },
   ];
 }

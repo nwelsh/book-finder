@@ -70,25 +70,11 @@ export default function Home() {
                   ? "✅ Kindle Unlimited"
                   : "❌ Not on Kindle Unlimited"}
               </p>
-              {book.library.exists ? (
-                <div className="mt-2">
-                  <p className="font-semibold">Chicago Public Library</p>
-
-                  {book.library.ebookAvailable && <p>📖 Ebook Available Now</p>}
-
-                  {book.library.ebookWaitlist && <p>⏳ Ebook Waitlist</p>}
-
-                  {book.library.audiobookAvailable && (
-                    <p>🎧 Audiobook Available Now</p>
-                  )}
-
-                  {book.library.audiobookWaitlist && (
-                    <p>⏳ Audiobook Waitlist</p>
-                  )}
-                </div>
-              ) : (
-                <p>❌ Not in Chicago Public Library - test</p>
-              )}
+              <p className="mt-2">
+                {book.chicagoLibrary
+                  ? "📚 Available at Chicago Public Library"
+                  : "❌ Not at Chicago Public Library"}
+              </p>
             </div>
           </div>
         ))}
