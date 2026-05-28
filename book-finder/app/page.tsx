@@ -11,7 +11,9 @@ export default function Home() {
     try {
       setLoading(true);
 
-      const res = await fetch(`/api/books?q=${query}`);
+      const res = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=${query}`,
+      );
 
       const data = await res.json();
 

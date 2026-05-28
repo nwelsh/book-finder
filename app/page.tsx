@@ -11,7 +11,9 @@ export default function Home() {
     try {
       setLoading(true);
 
-      const res = await fetch(`/api/books?q=${query}`);
+      const res = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=${query}`,
+      );
 
       const data = await res.json();
 
@@ -79,7 +81,7 @@ export default function Home() {
                   {book.library.ebookWaitlist && <p>⏳ Ebook Waitlist</p>}
 
                   {book.library.audiobookAvailable && (
-                    <p>🎧 Audiobook Available Now</p>
+                    <p>🎧 Audiobook Available</p>
                   )}
 
                   {book.library.audiobookWaitlist && (
@@ -87,7 +89,7 @@ export default function Home() {
                   )}
                 </div>
               ) : (
-                <p>❌ Not in Chicago Public Library - test</p>
+                <p>❌ Not in Chicago Public Library</p>
               )}
             </div>
           </div>
